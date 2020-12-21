@@ -19,6 +19,8 @@
 		C7465FAE258C856D00AF510D /* TestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7465FAD258C856D00AF510D /* TestButton.swift */; };
 		C7465FBA258C88B400AF510D /* CustomAnimationTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7465FB9258C88B400AF510D /* CustomAnimationTypeView.swift */; };
 		C79A8D2F258F243500F4FE82 /* GestureAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A8D2E258F243500F4FE82 /* GestureAnimationView.swift */; };
+		C7F23AFB25910D2B007EC72A /* TransitionAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F23AFA25910D2B007EC72A /* TransitionAnimationView.swift */; };
+		C7F23B0125911351007EC72A /* CornerRotateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F23B0025911351007EC72A /* CornerRotateModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		C7465FAD258C856D00AF510D /* TestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestButton.swift; sourceTree = "<group>"; };
 		C7465FB9258C88B400AF510D /* CustomAnimationTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationTypeView.swift; sourceTree = "<group>"; };
 		C79A8D2E258F243500F4FE82 /* GestureAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureAnimationView.swift; sourceTree = "<group>"; };
+		C7F23AFA25910D2B007EC72A /* TransitionAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationView.swift; sourceTree = "<group>"; };
+		C7F23B0025911351007EC72A /* CornerRotateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRotateModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				C7465FB9258C88B400AF510D /* CustomAnimationTypeView.swift */,
 				C73FB5B3258D5D42008714A4 /* RotationView.swift */,
 				C79A8D2E258F243500F4FE82 /* GestureAnimationView.swift */,
+				C7F23AFA25910D2B007EC72A /* TransitionAnimationView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		C7465F69258C810400AF510D /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				C7F23AFF25911345007EC72A /* ViewModifiers */,
 				C72F80D3258D47DC004BBE42 /* CustomViews */,
 				C7465FB5258C858100AF510D /* TabViews */,
 				C7465F6A258C810400AF510D /* AnimationsApp.swift */,
@@ -162,6 +168,14 @@
 				C7465FA8258C849600AF510D /* CustomAnimations.swift */,
 			);
 			path = TabViews;
+			sourceTree = "<group>";
+		};
+		C7F23AFF25911345007EC72A /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C7F23B0025911351007EC72A /* CornerRotateModifier.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +311,9 @@
 				C73FB5B4258D5D42008714A4 /* RotationView.swift in Sources */,
 				C7465FAE258C856D00AF510D /* TestButton.swift in Sources */,
 				C7465F99258C813800AF510D /* HomeView.swift in Sources */,
+				C7F23B0125911351007EC72A /* CornerRotateModifier.swift in Sources */,
 				C72F80C9258D3573004BBE42 /* Animation+Extensions.swift in Sources */,
+				C7F23AFB25910D2B007EC72A /* TransitionAnimationView.swift in Sources */,
 				C7465F6B258C810400AF510D /* AnimationsApp.swift in Sources */,
 				C7465FA9258C849600AF510D /* CustomAnimations.swift in Sources */,
 				C79A8D2F258F243500F4FE82 /* GestureAnimationView.swift in Sources */,

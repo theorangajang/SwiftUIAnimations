@@ -16,15 +16,17 @@ struct CustomAnimations: View {
   private let animationTypes: [AnimationType]
   private let rotationAnimation: [String]
   private let gestureAnimation: [String]
+  private let transitionAnimation: [String]
+  private let transitionTypes: [TransitionType]
   
   init() {
-    self.animationTitles = ["Spring",
-                            "Ease In",
-                            "Ease In Explicit"]
+    self.animationTitles = ["Spring", "Ease In", "Ease In Explicit"]
+    self.animationTypes = [.spring, .easeIn, .easeInOut]
     self.rotationAnimation = ["Rotation"]
     self.gestureAnimation = ["Animation Gesture"]
+    self.transitionAnimation = ["Transition Animation", "Custom Transition"]
+    self.transitionTypes = [.normal, .pivot]
     
-    self.animationTypes = [.spring, .easeIn, .easeInOut]
     self._animationAmount = .init(initialValue: 1)
   }
   
@@ -47,6 +49,12 @@ struct CustomAnimations: View {
         Section(header: Text("Gesture Animation")) {
           ForEach(0..<gestureAnimation.count) { (row) in
             NavigationLink(gestureAnimation[row], destination: GestureAnimationView())
+          }
+        }
+        
+        Section(header: Text("Transition Animation")) {
+          ForEach(0..<transitionAnimation.count) { row in
+            NavigationLink(transitionAnimation[row], destination: TransitionAnimationView(transitionTypes[row]))
           }
         }
       }
