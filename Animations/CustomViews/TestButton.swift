@@ -12,26 +12,33 @@ struct TestButton: View {
   @Binding var animationAmount: CGFloat
   
   // MARK: - State Variables for spring
-  @State private var damping: Double
-  @State private var stiffness: Double
+  @Binding private var damping: Double
+  @Binding private var stiffness: Double
   
   // MARK: State Variables for ease in and ease in/out
-  @State private var duration: Double
+  @Binding private var duration: Double
   
   // MARK: - Private Constants
   private let animationType: AnimationType
   
   // MARK: - Initializer
-  init(_ animationAmount: Binding<CGFloat>,_ animationType: AnimationType) {
+  init(_ animationAmount: Binding<CGFloat>,
+       _ animationType: AnimationType,
+       _ damping: Binding<Double>,
+       _ stiffness: Binding<Double>,
+       _ duration: Binding<Double>) {
     self._animationAmount = animationAmount
     self.animationType = animationType
+    self._damping = damping
+    self._stiffness = stiffness
+    self._duration = duration
   }
   
   // MARK: - Body
   var body: some View {
     Button("Tap Me") {
       withAnimation(setAnimation()) {
-        animationAmount += 1      
+        animationAmount += 1
       }
     }
     .padding(50)
@@ -45,32 +52,18 @@ struct TestButton: View {
 private extension TestButton {
   func setAnimation() -> Animation {
     switch animationType {
-    case .spring(let stiffness, let damping):
-      return .customSpring(stiffness: stiffness, damping: damping)
-    case .easeIn(let duration):
-      return .customEaseIn(duration: duration)
-    case .easeInOut(let duration):
-      return .customEaseIn(duration: duration)
-    }
-  }
-  
-  func createAnimationAdjuster() -> some View {
-    switch animationType {
     case .spring:
-      return VStack {
-        Slider(value: $stiffness, in: 0...50, label: { Text("Change Stiffness") })
-        Stepper("Change Damping", value: $damping, in: 0...5)
-      }
+      return .customSpring(stiffness: stiffness, damping: damping)
     case .easeIn:
-      return Text("Ease In")
+      return .customEaseIn(duration: duration)
     case .easeInOut:
-      return Text("Ease in out")
+      return .customEaseIn(duration: duration)
     }
   }
 }
 
 struct TestButton_Previews: PreviewProvider {
   static var previews: some View {
-    TestButton(.constant(0), .easeIn(1))
+    TestButton(.constant(0), .easeIn, .constant(0), .constant(0), .constant(0))
   }
 }

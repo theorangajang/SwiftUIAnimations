@@ -9,23 +9,52 @@ import SwiftUI
 
 struct CustomAnimations: View {
   // MARK: - State Variables
-  @State private var animationAmount: CGFloat = 1
+  @State private var animationAmount: CGFloat
   
   // MARK: - Private Variables
-  private let animationTypes = ["Ease In", "Ease In Explicit", "AutoReverse", "Repeat Forever"]
+  private let animationTitles: [String]
+  private let animationTypes: [AnimationType]
+  private let rotationAnimation: [String]
+  private let gestureAnimation: [String]
+  
+  init() {
+    self.animationTitles = ["Spring",
+                            "Ease In",
+                            "Ease In Explicit"]
+    self.rotationAnimation = ["Rotation"]
+    self.gestureAnimation = ["Animation Gesture"]
+    
+    self.animationTypes = [.spring, .easeIn, .easeInOut]
+    self._animationAmount = .init(initialValue: 1)
+  }
+  
   // MARK: - Body
   var body: some View {
-    List(animationTypes, id: \.self) { animations in
-      Text(animations)
+    NavigationView {
+      List {
+        Section(header: Text("Regular Animations")) {
+          ForEach(0..<3) { (row) in
+            NavigationLink(animationTitles[row], destination: CustomAnimationTypeView(animationTitles[row], animationTypes[row], $animationAmount))
+          }
+        }
+        
+        Section(header: Text("Rotation Animation")) {
+          ForEach(0..<rotationAnimation.count) { (row) in
+            NavigationLink(rotationAnimation[row], destination: RotationView(rotationAnimation[row]))
+          }
+        }
+        
+        Section(header: Text("Gesture Animation")) {
+          ForEach(0..<gestureAnimation.count) { (row) in
+            NavigationLink(gestureAnimation[row], destination: GestureAnimationView())
+          }
+        }
+      }
+      .onAppear(perform: {
+        animationAmount = 1
+      })
+      .navigationBarHidden(true)
     }
-    
-    
-//    TestButton(animationAmount: $animationAmount)
-//      .scaleEffect(animationAmount)
-//      .animation(
-//        Animation.easeInOut(duration: 1)
-//          .repeatCount(3, autoreverses: true)
-//      )
   }
 }
 

@@ -7,14 +7,22 @@
 
 import SwiftUI
 
-struct Animation_Extensions: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+enum AnimationType {
+  case spring
+  case easeIn
+  case easeInOut
 }
 
-struct Animation_Extensions_Previews: PreviewProvider {
-    static var previews: some View {
-        Animation_Extensions()
-    }
+extension Animation {
+  static func customSpring(stiffness: Double, damping: Double) -> Self {
+    .interpolatingSpring(stiffness: stiffness, damping: damping)
+  }
+  
+  static func customEaseIn(duration: Double) -> Self {
+    .easeIn(duration: duration)
+  }
+  
+  static func customEaseInOut(duration: Double) -> Self {
+    .easeInOut(duration: duration)
+  }
 }
